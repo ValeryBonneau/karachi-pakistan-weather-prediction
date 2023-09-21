@@ -28,7 +28,7 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 
 # Set the work directory to retrieve all data
-# script_dir = os.path.dirname(__file__)
+temp = os.environ
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 config_json = "config.json"
@@ -242,7 +242,7 @@ fig.add_trace(go.Scatter(x=predicted_df.index,
                 )
 
 fig.update_yaxes(title_text=labels_dict[forecast_choice])
-fig.update_layout(title=f"{forecast_choice} Forecasting for 10 years.")
+fig.update_layout(title=f"{forecast_choice} Forecasting for 10 days.")
 st.plotly_chart(fig, theme=None)
 
 with st.expander("Explanation"):
@@ -276,3 +276,5 @@ st.sidebar.write("""
                   """,
                 unsafe_allow_html=True
                   )
+
+st.write(f"{temp}")
